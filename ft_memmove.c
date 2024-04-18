@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 14:03:34 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/17 16:02:24 by ktieu            ###   ########.fr       */
+/*   Updated: 2024/04/18 10:51:32 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memmove(void *dst, const void *src, size_t src_len)
 	returned_dst = (unsigned char *) dst;
 	if (dst == src)
 		return (dst);
-	if (dst <= src)
+	if (dst < src)
 	{
 		while (src_len--)
 		{
