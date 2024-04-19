@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:51:51 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/18 16:16:18 by ktieu            ###   ########.fr       */
+/*   Updated: 2024/04/19 16:32:54 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <stddef.h>
 /*-------------------------------------------------------------------------*/
 /*								IS											*/
 /*-------------------------------------------------------------------------*/
@@ -46,6 +48,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t new_dst_len);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(const char *s1, const char *set);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /*-------------------------------------------------------------------------*/
