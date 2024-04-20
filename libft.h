@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 13:51:51 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/19 16:32:54 by ktieu            ###   ########.fr       */
+/*   Updated: 2024/04/20 15:49:16 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,28 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_atoi(const char *str);
+char	*ft_itoa(int n);
 
 /*-------------------------------------------------------------------------*/
 /*						DYNAMIC MEMORY ALLOCATION							*/
 /*-------------------------------------------------------------------------*/
 
 void	*ft_calloc(size_t count, size_t size);
-#endif	
+
+/*-------------------------------------------------------------------------*/
+/*							FUNCTIONS										*/
+/*-------------------------------------------------------------------------*/
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+/*-------------------------------------------------------------------------*/
+/*								FILES										*/
+/*-------------------------------------------------------------------------*/
+
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+
+#endif

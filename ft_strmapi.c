@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 15:16:13 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/20 09:06:15 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/20 14:06:46 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/20 14:40:15 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	long long int	res;
-	int				sign;
+#include "libft.h"
 
-	res = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+char	*ft_strmapi(char const *s, char (*f)(unsigned
+int, char))
+{
+	size_t			len;
+	unsigned int	index;
+	char			*res;
+	char			*res_ptr;
+
+	if (!s)
+		return (0);
+	index = 0;
+	len = ft_strlen(s);
+	res = (char *) malloc (sizeof(char) * (len + 1));
+	if (!res)
+		return (0);
+	res_ptr = res;
+	while (*s)
 	{
-		str++;
+		*res_ptr = f(index, *s);
+		index++;
+		s++;
+		res_ptr++;
 	}
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while ('0' <= *str && *str <= '9')
-	{
-		res = res * 10 + (*str - 48);
-		str++;
-	}
-	return (res * sign);
+	*res_ptr = '\0';
+	return (res);
 }
