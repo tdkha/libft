@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 10:27:37 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/23 10:02:19 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/22 13:52:00 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/22 15:36:44 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void	*dst, void const *src, size_t n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	void	*return_dst;
+	t_list	*cur_node;
 
-	return_dst = dst;
-	if (!dst && !src)
-		return (dst);
-	while (n--)
-		*(char *)dst++ = *(char *)src++;
-	return (return_dst);
+	if (!lst || !new)
+		return ;
+	if (!(*lst))
+	{
+		(*lst) = new;
+		return ;
+	}
+	cur_node = *lst;
+	while (cur_node->next != NULL)
+		cur_node = cur_node->next;
+	cur_node->next = new;
 }

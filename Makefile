@@ -6,7 +6,7 @@ NAME		= libft.a
 AR			= ar rcs #create library, (replace, create, sort)
 RM			= rm -f
 LIB			= ranlib
-GCC			= gcc
+CC			= cc
 CFLAGS 		= -Wall -Wextra -Werror
 
 #----------------------------------------------------------------------------
@@ -21,10 +21,10 @@ SRC_FILES		= 	./ft_atoi.c ./ft_bzero.c ./ft_calloc.c \
 					./ft_putchar_fd.c ./ft_putendl_fd.c ./ft_putnbr_fd.c ./ft_putstr_fd.c \
 					./ft_split.c ./ft_strchr.c ./ft_strdup.c ./ft_striteri.c ./ft_strjoin.c ./ft_strlcat.c \
 					./ft_strlcpy.c ./ft_strlen.c ./ft_strmapi.c ./ft_strncmp.c ./ft_strnstr.c ./ft_strrchr.c \
-					./ft_strtrim.c ./ft_substr.c \
+					./ft_strtrim.c ./ft_substr.c ./ft_split.c \
 					./ft_tolower.c ./ft_toupper.c 
-SRC_BONUS_FILES	=	./ft_lstnew.c ./ft_lstadd_front.c ./ft_lstsize.c ./ft_lstlast.c ./ft_lstadd_back.c \
-					./ft_lstdelone.c ./ft_lstclear.c ./ft_lstiter.c
+SRC_BONUS_FILES	=	./ft_lstnew_bonus.c ./ft_lstadd_front_bonus.c ./ft_lstsize_bonus.c ./ft_lstlast_bonus.c ./ft_lstadd_back_bonus.c \
+					./ft_lstdelone_bonus.c ./ft_lstclear_bonus.c ./ft_lstiter_bonus.c ./ft_lstmap_bonus.c
 OBJ_FILES		= $(SRC_FILES:.c=.o)
 OBJ_BONUS_FILES = $(SRC_BONUS_FILES:.c=.o)
 #----------------------------------------------------------------------------
@@ -39,18 +39,17 @@ $(NAME): $(OBJ_FILES)
 	$(LIB) $(NAME)
 
 %.o: %.c
-	$(GCC) $(CFLAGS) -c -I $(HEAD) $< -o $@
+	$(CC) $(CFLAGS) -c -I $(HEAD) $< -o $@
 
-bonus: $(OBJ_BONUS_FILES)
-	$(AR) $(NAME) $(OBJ_BONUS_FILES)
+bonus: $(OBJ_BONUS_FILES) $(NAME)
+	$(AR) $(NAME) $? $(OBJ_BONUS_FILES)
 	$(LIB) $(NAME)
 clean:
-	$(RM) $(OBJ_FILES)
+	$(RM) $(OBJ_FILES) $(OBJ_BONUS_FILES)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re:	fclean all
 
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

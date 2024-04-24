@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 10:56:15 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/20 14:52:50 by ktieu            ###   ########.fr       */
+/*   Updated: 2024/04/23 10:50:39 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static size_t	ft_count_digits(int n)
 	len = 0;
 	if (n == 0)
 		return (1);
-	if (n == 0)
-		len++;
 	while (n)
 	{
 		n /= 10;

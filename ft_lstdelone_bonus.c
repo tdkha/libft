@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 10:27:37 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/23 10:02:19 by ktieu            ###   ########.fr       */
+/*   Created: 2024/04/22 15:01:07 by ktieu             #+#    #+#             */
+/*   Updated: 2024/04/22 15:23:44 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void	*dst, void const *src, size_t n)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	void	*return_dst;
-
-	return_dst = dst;
-	if (!dst && !src)
-		return (dst);
-	while (n--)
-		*(char *)dst++ = *(char *)src++;
-	return (return_dst);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }
