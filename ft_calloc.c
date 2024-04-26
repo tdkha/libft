@@ -6,7 +6,7 @@
 /*   By: ktieu <ktieu@student.hive.fi>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:05:33 by ktieu             #+#    #+#             */
-/*   Updated: 2024/04/24 10:33:33 by ktieu            ###   ########.fr       */
+/*   Updated: 2024/04/25 09:50:46 by ktieu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*res;
+	size_t	total;
 
-	if (count && size && count > (ULONG_MAX / size))
+	total = count * size;
+	if (count > 0 && size > 0 && count != (total / size))
 		return (NULL);
 	res = malloc(count * size);
 	if (!res)

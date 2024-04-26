@@ -41,11 +41,16 @@ $(NAME): $(OBJ_FILES)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -I $(HEAD) $< -o $@
 
-bonus: $(OBJ_BONUS_FILES) $(NAME)
-	$(AR) $(NAME) $? $(OBJ_BONUS_FILES)
+bonus: .bonus
+
+.bonus: $(NAME) $(OBJ_BONUS_FILES) 
+	$(AR) $(NAME) $(OBJ_BONUS_FILES)
 	$(LIB) $(NAME)
+	@touch .bonus
+
 clean:
 	$(RM) $(OBJ_FILES) $(OBJ_BONUS_FILES)
+	@rm -f .bonus
 
 fclean: clean
 	$(RM) $(NAME)
